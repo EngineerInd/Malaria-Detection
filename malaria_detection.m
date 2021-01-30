@@ -1,7 +1,7 @@
 clc;
 clear all;
 close all;
-objects = imageDatastore('C:\Users\rajes\Desktop\projects\cell_images','IncludeSubfolders',true,'LabelSource','foldernames');
+objects = imageDatastore('C:\LUMBHARAM\cell_images','IncludeSubfolders',true,'LabelSource','foldernames');
 [trainImgs,testImgs] = splitEachLabel(objects,0.7);
 numClasses = numel(categories(objects.Labels));
 net1= alexnet;
@@ -16,6 +16,6 @@ cat_name=ly1.ClassNames;
 [testpreds,scores1] = classify(objectnet,testImgs);
 conmat=confusionmat(testImgs.Labels,testpreds);
 heatmap(cat_name,cat_name,conmat);
-img=imread('C:\Users\rajes\Desktop\projects\maliarieapjt\test_set\test8.jpg');
+img=imread('C:\LUMBHARAM\test_set\test8.jpg');
 [preds,scores2]=classify(objectnet,img);
 preds
